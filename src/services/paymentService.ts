@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL =  'http://localhost:3001';
+const API_BASE_URL =  'https://cbcf9430a6d2.ngrok-free.app';
 
 // Types for API requests and responses
 export interface PaymentIframeRequest {
