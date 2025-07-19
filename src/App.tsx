@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Users, TrendingUp, MessageCircle, ArrowRight, Phone, Lock, Timer, ChevronRight, CheckCircle2 } from 'lucide-react';
+import PaymentsPage from './components/PaymentsPage';
+import PaymentSuccessPage from './components/PaymentSuccessPage';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'payments' | 'success'>('home');
   const [spotsLeft, setSpotsLeft] = useState(23);
   const [timeLeft, setTimeLeft] = useState(900); // 15 minutes in seconds
 
@@ -21,7 +24,11 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = 'https://chat.whatsapp.com/JxLmBOEq16OJUO9giO6Agw';
+    setCurrentPage('payments');
+  };
+
+  const handlePaymentSuccess = () => {
+    setCurrentPage('success');
   };
 
   const crops = [
@@ -31,8 +38,18 @@ function App() {
     { name: 'Soybeans', trend: 'up', change: '+3.2%', farmers: 7 }
   ];
 
+  // Render different pages based on current state
+  if (currentPage === 'payments') {
+    return <PaymentsPage onPaymentSuccess={handlePaymentSuccess} />;
+  }
+
+  if (currentPage === 'success') {
+    return <PaymentSuccessPage />;
+  }
+
+  // Home page
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="w-full min-h-screen bg-black text-white flex flex-col">
       {/* Announcement Bar */}
       <div className="bg-green-500 text-black px-4 py-2 text-center text-sm font-medium">
         <span className="animate-pulse">🔥</span> Breaking: First 100 farmers get priority trading & best deals!
@@ -60,7 +77,7 @@ function App() {
         </div>
       </header>
 
-      <main>
+      <main className="flex-1">
         {/* Hero Section */}
         <section className="px-4 pt-16 pb-8 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -77,7 +94,7 @@ function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
-                onClick={() => (window.location.href = '/src/payment/index.html')}
+                onClick={() => setCurrentPage('payments')}
                 className="bg-green-500 text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-400 transition-colors flex items-center justify-center gap-2"
               >
                 Start Trading Today
@@ -189,13 +206,22 @@ function App() {
               <p className="text-lg text-gray-300">
                 Get access to real-time prices, market trends, and instant trading
               </p>
+<<<<<<< HEAD
               <a 
                 href="#join" 
+=======
+              <button 
+                onClick={() => setCurrentPage('payments')}
+>>>>>>> 0419a189f80dd52102a0e7b06172033215d82fa7
                 className="inline-flex items-center gap-2 bg-green-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors"
               >
                 Start Trading Now
                 <ArrowRight className="h-5 w-5" />
+<<<<<<< HEAD
               </a>
+=======
+              </button>
+>>>>>>> 0419a189f80dd52102a0e7b06172033215d82fa7
             </div>
           </div>
         </section>
