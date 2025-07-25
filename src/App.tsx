@@ -206,22 +206,13 @@ function App() {
               <p className="text-lg text-gray-300">
                 Get access to real-time prices, market trends, and instant trading
               </p>
-<<<<<<< HEAD
-              <a 
-                href="#join" 
-=======
               <button 
                 onClick={() => setCurrentPage('payments')}
->>>>>>> 0419a189f80dd52102a0e7b06172033215d82fa7
                 className="inline-flex items-center gap-2 bg-green-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors"
               >
                 Start Trading Now
                 <ArrowRight className="h-5 w-5" />
-<<<<<<< HEAD
-              </a>
-=======
               </button>
->>>>>>> 0419a189f80dd52102a0e7b06172033215d82fa7
             </div>
           </div>
         </section>
